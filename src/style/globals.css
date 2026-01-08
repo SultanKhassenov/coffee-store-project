@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  --color-coffee: #4f3e32;
+  --color-coffee-light: #6f5e52;
+  --color-soft: #f6f4f3;
+  --color-gray1: #979797;
+  --color-red1: #c54949;
+}
+
+body {
+  background: #fbfbfb;
+  color: #4a3f36;
+}
+
+[data-next-dev-overlay] {
+  display: none !important;
+}
+
+
+/* Button styles */
+.btn {
+ @apply shadow-[0_0_1px_1px_black]/5 transition-all duration-200 flex items-center justify-center;  
+}
+
+.nav-btn {
+  @apply p-2 max-sm:p-1 rounded-sm;
+}
+
+.qty-btn {
+  @apply w-8 h-8 rounded-[10px];
+}
+
+.light {
+  @apply text-[90%] font-light
+}
+
+
+/* Hero carousel pagination styles */
+.hero-carousel .swiper-pagination-bullet {
+  @apply bg-black/10 opacity-100 h-3 w-3;
+}
+
+.hero-carousel .swiper-pagination-bullet-active {
+  @apply bg-white/20;
+}
+
+.hero-carousel .swiper-button-prev {
+  @apply p-4 pl-3;
+}
+
+.hero-carousel .swiper-button-next {
+  @apply p-4 pr-3;
+}
+
+.hero-carousel .swiper-button-prev,
+.hero-carousel .swiper-button-next {
+  @apply max-lg:hidden hover:opacity-100 opacity-50 bg-coffee-light shadow-[0_0_10px_2px_#0001] w-14 h-14 text-white rounded-full transition-opacity duration-200;
+}
+
+
+
+/* Catalog carousel pagination styles */
+.catalog-btn {
+  @apply text-4xl px-2 hover:bg-[#eee] bg-white outline-2 hover:outline-[#eee] outline-gray-100 w-fit h-fit text-coffee/70;
+}
+
+.catalog-carousel .swiper-pagination-bullet {
+  @apply bg-white/20 opacity-100;
+}
+
+.catalog-carousel .swiper-pagination-bullet-active {
+  @apply bg-coffee;
+}
+
+
+
+@layer utilities {
+  .skeleton {
+    background-repeat: repeat;
+    background-image: linear-gradient(
+      -30deg,
+      #eee 53%,
+      #e5e5e5 58%,
+      #e5e5e5 75%,
+      #eee 80%
+    );
+    animation-duration: 600ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  .skeleton-vertical {
+    background-size: 100% 200%;
+    animation-name: skeleton-vertical;
+  }
+
+  .skeleton-horizontal {
+    background-size: 200% 100%;
+    animation-name: skeleton-horizontal;
+  }
+
+  @keyframes skeleton-vertical {
+    from { background-position: 0 100%; }
+    to   { background-position: 0 -100%; }
+  }
+
+  @keyframes skeleton-horizontal {
+    from { background-position: 100% 0; }
+    to   { background-position: -100% 0; }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-skeleton {
+    background-size: 100% 200%;
+    animation-name: skeleton-vertical;
+  }
+}
+
+@media (min-width: 769px) {
+  .hero-skeleton {
+    background-size: 200% 100%;
+    animation-name: skeleton-horizontal;
+  }
+}
+
+
+/* Add to cart button shimmer animation */
+@keyframes button-shimmer {
+  0% { background-position: 20% 0 }
+  to { background-position: -58% 0 }
+}
+
+.button-shimmer {
+  background-image: linear-gradient(
+    135deg,
+    transparent 50%,
+    #c8936d 55%,
+    #c8936d 80%,
+    #ffe0ca 90%,
+    transparent 100%
+  );
+  background-size: 400% 100%;
+}
+
+.button-shimmer:hover {
+  animation: button-shimmer 1s forwards;
+}
